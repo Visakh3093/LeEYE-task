@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+  </head>
+  <body>
+    <br><br><br>
+    <h1 class="ms-5">All Products</h1>
+    <br>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+  </body>
+</html>
+<body>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">name</th>
+        <th scope="col">mrp</th>
+        <th scope="col">discount</th>
+        <th scope="col">delivary charge</th>
+        <th scope="col">total</th>
+        <th scope="col">Description</th>
+        <th scope="col">image</th>
+        <th scope="col">action</th>
+      </tr>
+    </thead>
+    <tbody>
+        <% if(product.length> 0){ %>
+            <% for(let i=1;i <=product.length; i++){ %>  
+      <tr>
+        <th scope="row"><br></th>
+        <td><%= product[i-1].name  %> </td>
+        <td><%= product[i-1].mrp  %> </td>
+        <td><%= product[i-1].discount  %> </td>
+        <td><%= product[i-1].shipcharge  %> </td>
+        <td><%= product[i-1].total  %> </td>
+        <td><%= product[i-1].des  %> </td>
+        <td><img src="/product/<%= product[i-1].image[0] %>"
+            width="100vw" height="100vh"></td>
+
+
+            
+            <td> <a class="text-success" href="/editProduct?id=<%= product[i-1]._id %>"><i
+                style="color: green;"
+                class="m-r-5 mdi mdi-border-color"></i>Edit</a><br>
+       
+        <a class="text-danger" href="dltProduct?id=<%= product[i-1]._id %>"><i
+                style="color: #ff0000;"
+                class="m-r-5 mdi mdi-border-color"></i>Delete</a><br></td>
+      </tr>
+      <% }}else{ %>
+        <tr>
+            <td colspan="5">Products Not Found</td>
+        </tr>
+        <% } %>
+  
+      
+    </tbody>
+  </table>
+<form action="/addProduct" method="get">
+  <button>addProduct</button>
+</form>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
+</body>
+</html>
